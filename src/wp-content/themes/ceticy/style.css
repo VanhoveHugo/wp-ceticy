@@ -1,0 +1,319 @@
+/*
+Theme Name: Ceticy
+Template: twentytwentyfour
+Theme URI: https://wordpress.org/themes/ceticy/
+Author: Hugo Vanhove
+Description: Ceticy is designed to be flexible, versatile and applicable to any website. Its collection of templates and patterns tailor to different needs, such as presenting a business, blogging and writing or showcasing work. A multitude of possibilities open up with just a few adjustments to color and typography. Twenty Twenty-Four comes with style variations and full page designs to help speed up the site building process, is fully compatible with the site editor, and takes advantage of new design tools introduced in WordPress 6.4.
+Requires at least: 6.4
+Tested up to: 6.5
+Requires PHP: 7.0
+Version: 1.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: ceticy
+*/
+
+/* 
+ * Theme Customization
+ */
+
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+#headerimg h1 a {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+hr {
+    display: none;
+}
+
+#footer {
+    display: none;
+}
+
+.wp-block-button a {
+    display: flex;
+    padding: 16px;
+    border-radius: 16px;
+}
+
+.wp-block-button.chevron a::after {
+    content: "\f345";
+    font-family: "dashicons";
+    margin-left: 8px;
+}
+
+.wp-block-button.primary a {
+    background: #CEFF1A;
+}
+
+.wp-block-button.transparent a {
+    background: transparent;
+    color: #FFF;
+}
+
+.big {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.small {
+    font-size: 12px;
+}
+
+.grey {
+    color: #999;
+}
+
+.primary {
+    color: #CEFF1A;
+}
+
+/*
+ * General
+ */
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    max-width: 1200px;
+    margin: auto;
+
+}
+
+.hero {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.hero-title {
+    font-family: 'Author';
+    font-style: normal;
+    font-size: 70px;
+    line-height: 89px;
+    text-align: center;
+    display: block;
+}
+
+.hero-legend {
+    color: #D4D4D4;
+    max-width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+.cta-hero {
+    display: flex;
+    justify-content: center;
+    margin-top: 52px;
+    gap: 16px;
+}
+
+.imgs-anim {
+    position: relative;
+    height: 800px;
+}
+
+.img-anim {
+    position: absolute;
+    bottom: 0;
+    width: 450px;
+    height: 750px;
+}
+
+.img-middle {
+    top: 0;
+    left: calc(50% - 225px);
+    z-index: 1;
+}
+
+.img-left {
+    left: calc(50% - 425px);
+    z-index: 0;
+    opacity: 0;
+}
+
+.img-right {
+    left: calc(50% - 25px);
+    z-index: 0;
+    opacity: 0;
+}
+
+.solution {
+    position: relative;
+    padding-top: 175px;
+    margin: 150px 0 200px;
+}
+
+.solution, .why, .testimonial, .collapse {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    flex-wrap: wrap;
+    padding-bottom: 80px;
+    display: block;
+}
+
+p {
+    text-align: center;
+    margin: 0;
+}
+
+.solution p:first-child {
+    margin-bottom: 2rem;
+}
+
+.img-solution {
+    position: absolute;
+    top: -100px;
+    width: 100%;
+    z-index: -1;
+}
+
+.img-solution img {
+    width: 100%;
+    height: auto;
+}
+
+.why .small {
+    margin-top: .5rem;
+}
+
+.why-cards {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.04);
+    flex: 1;
+    border-radius: 16px;
+    border: 1px solid #262626;
+    padding: 24px;
+    text-align: center;
+}
+
+.number {
+    font-weight: bold;
+}
+
+.description {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #262626;
+    white-space: nowrap;
+}
+
+.avantage {
+    color: #CEFF1A;
+}
+
+.testimonial .big {
+    width: 250px;
+    text-align: left;
+}
+
+/* 
+ * Animation 
+ */
+
+.img-middle {
+    animation: slideBotToTop .75s ease-in-out forwards;
+}
+
+.img-left {
+    animation: slideRightToLeft .75s ease-in-out forwards 0.3s;
+}
+
+.img-right {
+    animation: slideLeftToRight .75s ease-in-out forwards .5s;
+}
+
+@keyframes slideLeftToRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideRightToLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideBotToTop {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* 
+footer > div {
+    max-width: 750px;
+    margin: auto;
+}
+footer div div div div {
+    flex-wrap: nowrap !important;
+}
+
+footer div div > div {
+    padding: 1px;
+}
+
+footer > div > div > div:last-child {
+    border: 1px solid #262626;
+    border-radius: .33rem;
+}
+
+.wp-block-button a, .wp-block-button a:hover {
+    background: transparent;
+    color: #FFF;
+}
+
+.wp-block-button:last-child a {
+    background: #FFF;
+    color: #000;
+} */
