@@ -1,55 +1,4 @@
 <?php get_header(); ?>
-
-<?php
-$img_middle_id = '';
-$img_middle_query = new WP_Query( array(
-    'post_type'      => 'attachment',
-    'post_mime_type' => 'image',
-    'post_status'    => 'inherit',
-    'title'          => 'img-middle',
-) );
-
-if ( $img_middle_query->have_posts() ) {
-    $img_middle_id = $img_middle_query->posts[0]->ID;
-}
-
-$img_left_id = '';
-$img_left_query = new WP_Query( array(
-    'post_type'      => 'attachment',
-    'post_mime_type' => 'image',
-    'post_status'    => 'inherit',
-    'title'          => 'img-left',
-) );
-
-if ( $img_left_query->have_posts() ) {
-    $img_left_id = $img_left_query->posts[0]->ID;
-}
-
-$img_right_id = '';
-$img_right_query = new WP_Query( array(
-    'post_type'      => 'attachment',
-    'post_mime_type' => 'image',
-    'post_status'    => 'inherit',
-    'title'          => 'img-right',
-) );
-
-if ( $img_right_query->have_posts() ) {
-    $img_right_id = $img_right_query->posts[0]->ID;
-}
-
-$img_solution_id = '';
-$img_solution_query = new WP_Query( array(
-    'post_type'      => 'attachment',
-    'post_mime_type' => 'image',
-    'post_status'    => 'inherit',
-    'title'          => 'img-solution',
-) );
-
-if ( $img_solution_query->have_posts() ) {
-    $img_solution_id = $img_solution_query->posts[0]->ID;
-}
-?>
-
 <main class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
     <section class="hero">
         <strong class="hero-title">Découvrez, Organisez & Profitez</strong>
@@ -65,29 +14,21 @@ if ( $img_solution_query->have_posts() ) {
        </div>
 
         <div class="imgs-anim">
-            <?php if ( ! empty( $img_middle_id ) ) : ?>
-                <div class="img-anim img-middle">
-                    <?php echo wp_get_attachment_image( $img_middle_id, 'full' )?>
-                </div>
-            <?php endif; ?>
-            <?php if ( ! empty( $img_left_id ) ) : ?>
-                <div class="img-anim img-left">
-                    <?php echo wp_get_attachment_image( $img_left_id, 'full' )?>
-                </div>
-            <?php endif; ?>
-            <?php if ( ! empty( $img_right_id ) ) : ?>
-                <div class="img-anim img-right">
-                    <?php echo wp_get_attachment_image( $img_right_id, 'full' )?>
-                </div>
-            <?php endif; ?>
+            <div class="img-anim img-middle">
+                <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/hero-middle.png' ?>" alt="">
+            </div>
+            <div class="img-anim img-left">
+            <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/hero-left.png' ?>" alt="">
+            </div>
+            <div class="img-anim img-right">
+            <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/hero-right.png' ?>" alt="">
+            </div>
         </div>
     </section>
 
     <section class="solution">
        <div class="img-solution">
-            <?php if ( ! empty( $img_solution_id ) ) : ?>
-                <?php echo wp_get_attachment_image( $img_solution_id, 'full' )?>
-            <?php endif; ?>
+            <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/solution.png' ?>" alt="">
        </div>
         <p class="big">Les meilleurs <span class="primary">bars et restaurants</span> autour de toi</p>
         <p>T’en a marre d’aller toujours aux mêmes endroits ?</p>
@@ -102,31 +43,60 @@ if ( $img_solution_query->have_posts() ) {
             <div class="small grey">Jusqu'à</div>
             <div class="number big">1 Heure</div>
             <div class="description small">pour décider d'un restaurant</div>
-            <div class="avantage">Réduction du temps de décision à 5/10min</div>
+            <div class="primary">Réduction du temps de décision à 5/10min</div>
         </div>
         <div class="card card-2">
             <div class="small grey">Moyenne de</div>
             <div class="number big">16€</div>
             <div class="description small">de panier moyen par personne</div>
-            <div class="avantage">Augmentation du panier moyen de +25%</div>
+            <div class="primary">Augmentation du panier moyen de +25%</div>
         </div>
         <div class="card card-3">
             <div class="small grey">Environ</div>
             <div class="number big">42%</div>
             <div class="description small">préfèrent des restaurants avec un univers unique</div>
-            <div class="avantage">Des restaurants et bars avec un concept et une ambiance unique</div>
+            <div class="primary">Des restaurants et bars avec un concept et une ambiance unique</div>
         </div>
         </div>
     </section>
 
-    <section class="testimonial">
+    <!-- <section class="testimonial">
         <p class="big">Quelques mots de <span class="primary">l'équipe</span></p>
-    </section>
+    </section> -->
 
-    <section class="collapse">
+    <!-- <section class="collapse">
         <p class="big">Plus besoin de chercher, <span class="primary">découvrez</span></p>
+    </section> -->
+
+    <section class="newsletter">
+        <?php
+        while (have_posts()) : the_post();
+            get_template_part('template-parts/content', 'page');
+        endwhile;
+        ?>
+
+        <div class="wpforms-form">
+            <div class="small primary">Newsletter</div>
+            <div class="big">Suivez toute notre actualité</div>
+            <?php
+                echo do_shortcode('[wpforms id="82"]');
+            ?>
+            <div class="small grey">En soumettant ta candidature, tu autorises Ceticy à stocker et à traiter tes informations personnelles afin que nous puissions te fournir le contenu que t’as demandé. Pour plus d’informations, n’hésite pas à consulter notre Politique de confidentialité.</div>
+        </div>
+        <div class="img-newsletter">
+        <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/newsletter.png' ?>" alt="">
+        </div>
     </section>
 </main>
 
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+        if (window.performance) {
+            if (window.performance.navigation.type == 1) {
+                window.scrollTo(0, 0);
+            }
+        }
+    });
+</script>
 
 <?php get_footer(); ?>
